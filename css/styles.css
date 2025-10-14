@@ -1,0 +1,713 @@
+/* ==========================================
+   CSS RESET - Remueve los estilos default del buscador
+   ========================================== */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 
+    * - selecciona todos los elementos 
+    box-sizing: border-box significa padding/border estan incluidos en el width
+    Ej. width: 300px con 20px padding = todavia 300px total (no 340px)
+*/
+
+
+/* ==========================================
+   CSS Variables - Sistema de Diseño
+   ========================================== */
+
+:root {
+    /* Colores */
+    --color-bg: #151515;
+    --color-texto: #FFFFFF;
+    --color-texto-gris: #D9D9D9;
+    --color-verde: #4EE1A0;
+    --color-error: #FF6F5B;
+
+    /* Espaciado */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 5rem;
+
+    /* Tamaños de fuentes */
+    --font-size-h1: 2.5rem;      
+    --font-size-h2: 2rem;        
+    --font-size-h3: 1.5rem; 
+    --font-size-h4: 1rem;
+
+    /* Peso de fuentes */
+    --font-weight-normal: 500;
+    --font-weight-bold: 700;
+
+    /* Interlineado */
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.8;
+
+    /* Redondeo */
+    --radius-sm: 4px; 
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* 
+- :root es el elemento HTML (la cima del árbol)
+- Las variables comienzan con --
+- Se usan con var(--nombre-variable)
+- rem es unidad de medida estándar
+  1rem = 16px, 2rem = 32px, etc.
+*/
+
+
+/* ==========================================
+   BODY Y TIPOGRAFIA
+   ========================================== */
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-normal);
+    color: var(--color-texto);
+    background-color: var(--color-bg);
+    margin: 0 auto;
+    scroll-behavior: smooth;
+}
+
+/* Titulos */
+h1,
+h2,
+h3,
+h4 {
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    /* 1.2 */
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+}
+
+/* Párrafos */
+p {
+    color: var(--color-texto-gris);
+    line-height: var(--line-height-relaxed);
+    /* 1.8 */
+}
+
+/* ==========================================
+   CLASSES REUTILIZABLES
+   ========================================== */
+
+/* Oculta su visibilidad pero mantiene el contenido accessible */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.container {
+    max-width: 1110px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* ==========================================
+   HEADER & NAVBAR
+   ========================================== */
+
+header {
+    padding: var(--spacing-sm) 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1110px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.logo a {
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-texto);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.links {
+    display: flex;
+    gap: var(--spacing-md);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.links li a {
+    transition: var(--transition-normal);
+    color: var(--color-texto);
+    display: inline-block;
+}
+
+/* display: inline-block para que el icono no cambie de tamaño al hacer hover */
+
+.links li a .links-item {
+    width: 40px;
+    height: 40px;
+    fill: var(--color-texto);
+    transition: fill var(--transition-normal);
+}
+
+.links li a:hover {
+    cursor: pointer;
+    transform: translateY(-3px) scale(1.05);
+    opacity: 0.7;
+}
+
+/* ==========================================
+   SECCION HERO
+   ========================================== */
+
+.hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) var(--spacing-sm);
+    max-width: 1110px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-contenido {
+    z-index: 1;
+}
+
+.hero h1 {
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-nombre {
+    position: relative;
+    display: inline-block;
+}
+
+/* Nos sirve para subrayar el texto del nombre */
+.hero-nombre::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-verde);
+}
+/* width: 100% - Toma el ancho del elemento padre */
+
+.hero-descripcion {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-h4);
+}
+
+/* NOT CORRECTLY POSITIONED */
+.hero-imagen {
+    position: relative;
+}
+
+.hero-imagen img {
+    width: 100%;
+    max-width: 445px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--radius-sm);
+}
+
+/* ==========================================
+   BOTONES
+   ========================================== */
+
+.hero-btn {
+    display: inline-block;
+    padding: 0.75rem 0.5rem;
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-texto);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    border-bottom: 2px solid var(--color-verde);
+    transition: var(--transition-normal);
+    background: transparent;
+}
+/* 
+- display: block = full width (100%)
+- display: inline = can't set padding/margin
+- display: inline-block = best of both! ✅
+  - Respects padding/margin
+  - Doesn't force full width
+*/
+
+.hero-btn:hover {
+    color: var(--color-verde);
+    cursor: pointer;
+}
+
+.proyectos-btn {
+    display: inline-block;
+    padding: 0.75rem 0.5rem;
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-texto);
+    text-decoration: solid;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    border-bottom: 2px solid var(--color-verde);
+    transition: var(--transition-normal);
+    background: transparent;
+}
+
+.proyectos-btn:hover {
+    color: var(--color-verde);
+    cursor: pointer;
+}
+
+.contacto-btn {
+    align-self: flex-end;
+    padding: 0.75rem 0.5rem;
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-texto);
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--color-verde);
+    transition: var(--transition-normal);
+}
+
+.contacto-btn:hover {
+    color: var(--color-verde);
+    cursor: pointer;
+}
+
+/* ==========================================
+   SECCION HABILIDADES
+   ========================================== */
+
+.habilidades {
+    padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.habilidades-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    text-align: center;
+    max-width: 1110px;
+    margin: 0 auto;
+    border-top: 1px solid var(--color-texto-gris);
+    padding-top: var(--spacing-lg);
+}
+
+.habilidades-item h3{
+    margin-bottom: var(--spacing-xs);
+}
+
+.habilidades-item p {
+    font-size: var(--font-size-body);
+    color: var(--color-texto-gris);
+}
+
+/* ==========================================
+   SECCION PROYECTOS
+   ========================================== */
+
+.proyectos {
+    padding: var(--spacing-lg) var(--spacing-sm);
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.proyectos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+.proyecto-carta {
+    position: relative;
+}
+
+.proyecto-imagen {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: var(--spacing-sm);
+    aspect-ratio: 10 / 7;
+}
+/* 
+    overflow: hidden - Recorta todo lo que sale del contenedor 
+    aspect-ratio: 16 / 9 - Forza la proporcion de tamaño de la imagen
+*/
+
+.proyecto-imagen img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+    transition: var(--transition-normal);
+}
+/* object-fit: cover - Hace que la imagen tome todo el espacio disponible sin distorcion */
+
+.proyecto-textos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    opacity: 0;
+    transition: var(--transition-normal);
+}
+/* 
+Posición Absoluta
+- Removes element from normal flow
+- Positioned relative to nearest positioned ancestor
+- top: 0, left: 0 = top-left corner
+- width/height: 100% = covers entire parent
+
+Visual:
+┌─────────────────┐
+│                 │
+│  [Imagen Aquí]  │  ← .proyecto-imagen (position: relative)
+│                 │
+│  ┌───────────┐  │
+│  │ Sobrecapa │  │  ← .proyecto-textos (position: absolute)
+│  │ [Botones] │  │
+│  └───────────┘  │
+└─────────────────┘
+*/
+
+/* Muestra el texto al acercar el mouse */
+.proyecto-carta:hover .proyecto-textos {
+    opacity: 1;
+}
+
+.proyecto-carta:hover .proyecto-imagen img {
+    transform: scale(1.05);
+}
+
+.boton-proyecto {
+    display: inline-block;
+    padding: 0.75rem 0.5rem;
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-texto);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    border-bottom: 2px solid var(--color-verde);
+    transition: var(--transition-normal);
+    background: transparent;
+}
+
+.boton-proyecto:hover {
+    color: var(--color-verde);
+}
+
+.proyecto-titulo {
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+}
+
+.proyecto-tecnologias {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+/* 
+    flex-wrap: wrap - Permite a los elementos moverse a la siguiente línea 
+    Sino los elementos se comprimirían
+*/
+
+.proyecto-tecnologias li {
+    font-size: var(--font-size-body);
+    color: var(--color-texto-gris);
+    text-transform: uppercase;
+}
+
+/* ==========================================
+   SECCIÓN CONTACTO
+   ========================================== */
+
+.contacto {
+    padding: var(--spacing-xl) var(--spacing-sm);
+    background-color: #242424;
+}
+
+.contacto-contenido {
+    max-width: 1110px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+.contacto-texto {
+    text-align: justify;
+}
+
+.contacto-texto h2{
+    margin-bottom: var(--spacing-sm);
+}
+
+.contacto-texto p {
+    line-height: var(--line-height-relaxed);
+}
+
+.contacto-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.contacto-input {
+    position: relative;
+}
+
+.contacto-input input,
+.contacto-input textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
+    font-family: inherit;
+    font-size: var(--font-size-body);
+    color: var(--color-texto);
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-texto-gris);
+    outline: none;
+    transition: var(--transition-fast);
+}   
+
+/* Focus - indica que un campo del form está seleccionado */
+.contacto-input input:focus,
+.contacto-input textarea:focus {
+    border-bottom-color: var(--color-verde);
+}
+
+/* Estilos al placeholder */
+.contacto-input input::placeholder,
+.contacto-input textarea::placeholder {
+    color: var(--color-texto-gris);
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+/* ::placeholder - Pseudoelemento que modifica el texto del input  */
+
+.contacto-input textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+/* 
+    resize: vertical - Permite modificar unicamente la altura (height) mas no el ancho (width)
+*/
+
+.mensaje-error {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+    color: var(--color-error);
+    display: none;
+}
+
+/* 
+Centrar con Transform:
+- top: 50% moves element down 50% of parent
+- transform: translateY(-50%) moves it up 50% of itself
+- Result: perfectly centered vertically!
+
+Visual (side view):
+         ↓ top: 50%
+    ┌────────┐
+    │ Input  │ ← 50% of parent height
+    │░░░░░░░░│
+    └────────┘
+         ↑ translateY(-50%) brings it back up
+*/
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.footer {
+    padding: var(--spacing-lg) var(--spacing-sm);
+    background-color: #242424;
+} 
+
+.footer nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1110px;
+    margin: 0 auto;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-texto-gris);
+}
+
+.footer-texto {
+    color: var(--color-texto);
+    text-align: center;
+}
+
+/* ==========================================
+   MEDIA QUERIES - TABLETS (768px)
+   ========================================== */
+
+@media (min-width: 768px) {
+    :root {
+        --font-size-h1: 4.5rem;
+        --font-size-h2: 3.5rem;
+        --font-size-h3: 2.5rem;
+        --font-size-h4: 1.5rem;
+    }
+
+    nav {
+        flex-direction: row;
+    }
+
+    .hero {
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+    }
+
+    .hero-descripcion {
+        text-align: justify;
+    }
+
+    .habilidades-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+        text-align: left;
+    }
+
+    .proyectos-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contacto-contenido {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-xl);
+    }
+}
+
+
+/* ==========================================
+   MEDIA QUERIES - LAPTOPS (1024px)
+   ========================================== */
+
+@media (min-width: 1024px) {
+    .hero {
+        grid-template-columns: 1.2fr 1fr;
+    }
+    
+    .habilidades-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ==========================================
+   MEDIA QUERIES - DESKTOPS (1024px)
+   ========================================== */
+
+@media (min-width: 1440px) {
+
+    .habilidades-grid {
+        gap: var(--spacing-lg);
+    }
+}
+
+
+
+/* ==========================================
+   ESTILOS DE ERROR Y ÉXITO DEL FORMULARIO
+   ========================================== */
+
+/* Input con error (borde rojo) */
+.contacto-input input.error,
+.contacto-input textarea.error {
+    border-bottom-color: var(--color-error);
+}
+
+/* Mensaje de error (texto rojo a la derecha) */
+.mensaje-error-temporal {
+    padding: var(--spacing-sm);
+    background-color: rgba(255, 111, 91, 0.1);
+    border-left: 4px solid var(--color-error);
+    color: var(--color-error);
+    font-weight: var(--font-weight-bold);
+    border-radius: var(--radius-sm);
+    text-align: left;
+}
+
+/* Mensaje de éxito (caja verde) */
+.mensaje-exito {
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    background-color: rgba(78, 225, 160, 0.1);
+    border-left: 4px solid var(--color-verde);
+    color: var(--color-verde);
+    font-weight: var(--font-weight-bold);
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
