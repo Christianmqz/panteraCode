@@ -1,12 +1,12 @@
 # Archivo con textos predeterminados del proyecto
 
-# Sección Hero
+## Sección Hero
 titulo: PanteraCode
 parrafo: Aquí encontrarás algunos de mis proyectos más destacados como desarrollador web, junto con las habilidades y lenguajes de programación que domino.
 link: Ver mis proyectos
 
 
-# Seccion Habilidades
+## Seccion Habilidades
 titulo 1: HTML5
 descripcion 1: 3 años de experiencia
 
@@ -26,7 +26,7 @@ titulo 6: MySQL / MongoDB
 descripcion 6: 1 año de experiencia
 
 
-# Seccion Proyectos
+## Seccion Proyectos
 titulo: Proyectos
 link 1: Contáctame
 
@@ -49,7 +49,7 @@ titulo 6: Itch Idiomas — Traductor Online
 items lista 6: React API TailwindCSS
 
 
-# Seccion Contacto
+## Seccion Contacto
 titulo: Contacto
 descripcion: Si deseas conocer más sobre mis proyectos o colaborar en futuros desarrollos, no dudes en escribirme. Estaré encantado de conectar contigo y compartir ideas.
 
@@ -60,5 +60,5 @@ placeholder 3: MENSAJE
 boton: Enviar Mensaje
 
 
-# Footer
+## Footer
 texto: © 2025 Todos los derechos reservados.
