@@ -37,9 +37,9 @@ https://www.instagram.com/christianmqz10/
 https://www.linkedin.com/in/christianmqz10/
 
 ### Proyecto 1 - esquinaDelCafe
-codigo: https://github.com/Christianmqz/esquinaDelCafe
-url: https://esquinadelcafe.netlify.app
+**codigo:** https://github.com/Christianmqz/esquinaDelCafe
+**url:** https://esquinadelcafe.netlify.app
 
 ### Proyecto 2 - tecateRepublica
-codigo: https://github.com/Christianmqz/tecateRepublica
-url: https://tecaterepublica.netlify.app
+**codigo:** https://github.com/Christianmqz/tecateRepublica
+**url:** https://tecaterepublica.netlify.app
